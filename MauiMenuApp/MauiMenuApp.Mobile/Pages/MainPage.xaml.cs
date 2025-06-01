@@ -1,14 +1,17 @@
-﻿using MauiMenuApp.Mobile.Models;
-using MauiMenuApp.Mobile.PageModels;
+﻿using MauiMenuApp.Mobile.ViewModels;
 
 namespace MauiMenuApp.Mobile.Pages
 {
     public partial class MainPage : ContentPage
     {
-        public MainPage(MainPageModel model)
+        private MainPageViewModel _viewModel;
+
+
+        public MainPage(MainPageViewModel viewModel)
         {
             InitializeComponent();
-            BindingContext = model;
+            _viewModel = viewModel;
+            BindingContext = viewModel;
         }
     }
 }

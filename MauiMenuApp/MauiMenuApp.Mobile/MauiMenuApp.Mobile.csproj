@@ -86,7 +86,10 @@
 
 	<ItemGroup>
 	  <Folder Include="Services\" />
-	  <Folder Include="ViewModels\" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\MauiMenuApp.Domain\MauiMenuApp.Domain.csproj" />
 	</ItemGroup>
 	
 </Project>
