@@ -85,10 +85,6 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Folder Include="Services\" />
-	</ItemGroup>
-
-	<ItemGroup>
 	  <ProjectReference Include="..\MauiMenuApp.Domain\MauiMenuApp.Domain.csproj" />
 	</ItemGroup>
 	

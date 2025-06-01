@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Net;
 
 namespace MauiMenuApp.Domain.Common
 {
@@ -11,7 +6,6 @@ namespace MauiMenuApp.Domain.Common
     {
         public HttpStatusCode StatusCode { get; set; }
         public bool Success { get { return Errors.Count == 0; } }
-        public string Message { get; set; }
         public List<Error> Errors { get; set; } = new();
     }
 

@@ -1,4 +1,4 @@
-﻿namespace MauiMenuApi.Domain.DTOs
+﻿namespace MauiMenuApp.Domain.DTOs
 {
     public class MenuItemDto
     {

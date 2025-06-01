@@ -2,7 +2,7 @@
 {
     public class SubMenuModel
     {
-        public List<MenuItemModel> MenuItems { get; set; }
+        public List<MenuItemModel>? MenuItems { get; set; }
         public SubMenuModel()
         {
             MenuItems = new List<MenuItemModel>();
