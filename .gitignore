@@ -1,0 +1,18 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/.vs/MauiMenuApp/v17
+/MauiMenuApi/.vs
+/MauiMenuApi/MauiMenuApi.Api/bin/Debug/net8.0
+/MauiMenuApi/MauiMenuApi.Api/obj
+/MauiMenuApi/MauiMenuApi.BusinessLayer/bin/Debug/net8.0
+/MauiMenuApi/MauiMenuApi.BusinessLayer/obj
+/MauiMenuApi/MauiMenuApi.DataAccessLayer/bin/Debug/net8.0
+/MauiMenuApi/MauiMenuApi.DataAccessLayer/obj
+/MauiMenuApi/MauiMenuApi.Domain/bin/Debug/net8.0
+/MauiMenuApi/MauiMenuApi.Domain/obj
+/MauiMenuApp/.vs
+/MauiMenuApp/MauiMenuApp.Domain/obj
+/MauiMenuApp/MauiMenuApp.Mobile/obj
+/.vs

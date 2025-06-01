@@ -1,0 +1,43 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36109.1 d17.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MauiMenuApi.Api", "MauiMenuApi.Api\MauiMenuApi.Api.csproj", "{6010D1E3-FCAC-43FF-B237-9F67807CEB61}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MauiMenuApi.Domain", "MauiMenuApi.Domain\MauiMenuApi.Domain.csproj", "{89843E2F-FFA9-4089-96EC-BF66CA7FCAA3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MauiMenuApi.BusinessLayer", "MauiMenuApi.BusinessLayer\MauiMenuApi.BusinessLayer.csproj", "{93398010-E00A-4017-9811-CC3A11CD9E57}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MauiMenuApi.DataAccessLayer", "MauiMenuApi.DataAccessLayer\MauiMenuApi.DataAccessLayer.csproj", "{50C97303-0C6A-40C9-BDC2-BA7ED8CEB4A8}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6010D1E3-FCAC-43FF-B237-9F67807CEB61}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6010D1E3-FCAC-43FF-B237-9F67807CEB61}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6010D1E3-FCAC-43FF-B237-9F67807CEB61}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6010D1E3-FCAC-43FF-B237-9F67807CEB61}.Release|Any CPU.Build.0 = Release|Any CPU
+		{89843E2F-FFA9-4089-96EC-BF66CA7FCAA3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{89843E2F-FFA9-4089-96EC-BF66CA7FCAA3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{89843E2F-FFA9-4089-96EC-BF66CA7FCAA3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{89843E2F-FFA9-4089-96EC-BF66CA7FCAA3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{93398010-E00A-4017-9811-CC3A11CD9E57}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{93398010-E00A-4017-9811-CC3A11CD9E57}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{93398010-E00A-4017-9811-CC3A11CD9E57}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{93398010-E00A-4017-9811-CC3A11CD9E57}.Release|Any CPU.Build.0 = Release|Any CPU
+		{50C97303-0C6A-40C9-BDC2-BA7ED8CEB4A8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{50C97303-0C6A-40C9-BDC2-BA7ED8CEB4A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{50C97303-0C6A-40C9-BDC2-BA7ED8CEB4A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{50C97303-0C6A-40C9-BDC2-BA7ED8CEB4A8}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {9AE6706A-2918-4055-BE4E-EEDA1BCF3E81}
+	EndGlobalSection
+EndGlobal
