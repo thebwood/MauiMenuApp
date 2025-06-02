@@ -7,7 +7,19 @@ namespace MauiMenuApp.Mobile.ViewModels
     public partial class MainPageViewModel : BaseViewModel
     {
         private readonly IMenuItemClient _menuItemClient;
-        public ObservableCollection<MenuItemModel> MainMenuItems { get; set; } = new ObservableCollection<MenuItemModel>();
+        private ObservableCollection<MenuItemModel> _mainMenuItems = new();
+        public ObservableCollection<MenuItemModel> MainMenuItems
+        {
+            get => _mainMenuItems;
+            set
+            {
+                if (_mainMenuItems != value)
+                {
+                    _mainMenuItems = value;
+                    OnPropertyChanged(nameof(MainMenuItems));
+                }
+            }
+        }
 
         public MainPageViewModel(IMenuItemClient menuItemClient)
         {

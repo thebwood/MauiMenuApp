@@ -1,5 +1,6 @@
 ﻿using MauiMenuApp.Domain.DTOs;
 using MauiMenuApp.Domain.Models;
+using System.Collections.ObjectModel;
 
 namespace MauiMenuApp.Domain.Mappings
 {
@@ -26,7 +27,8 @@ namespace MauiMenuApp.Domain.Mappings
             {
                 ParentMenuItemId = dto.ParentMenuItemId,
                 ParentDisplayName = dto.ParentDisplayName,
-                MenuItems = dto.MenuItems?.Select(m => m.ToModel()).ToList()
+                MenuItems = new ObservableCollection<MenuItemModel>(
+                    dto.MenuItems?.Select(m => m.ToModel()) ?? Enumerable.Empty<MenuItemModel>())
             };
         }   
     }
