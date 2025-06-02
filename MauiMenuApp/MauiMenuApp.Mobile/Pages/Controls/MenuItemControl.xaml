@@ -1,28 +1,29 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:model="clr-namespace:MauiMenuApp.Domain.Models;assembly=MauiMenuApp.Domain"
-             xmlns:viewmodel="clr-namespace:MauiMenuApp.Mobile.ViewModels"
-             x:Class="MauiMenuApp.Mobile.Pages.PartialViews.MenuItemControl">
-    <CollectionView ItemsSource="{Binding MenuItems}">
-        <CollectionView.ItemTemplate>
-            <DataTemplate x:DataType="model:MenuItemModel">
-                <Border Stroke="LightGray"
-                        StrokeThickness="1"
-                        BackgroundColor="White"
-                        Margin="0,5"
-                        Padding="15">
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"  
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"  
+             xmlns:model="clr-namespace:MauiMenuApp.Domain.Models;assembly=MauiMenuApp.Domain"  
+             xmlns:control="clr-namespace:MauiMenuApp.Mobile.Pages.Controls"
+             x:Class="MauiMenuApp.Mobile.Pages.PartialViews.MenuItemControl">  
+    <CollectionView ItemsSource="{Binding MenuItems}">  
+        <CollectionView.ItemTemplate>  
+            <DataTemplate x:DataType="model:MenuItemModel">  
+                <Border Stroke="LightGray"  
+                        StrokeThickness="1"  
+                        BackgroundColor="White"  
+                        Margin="0,5"  
+                        Padding="15">  
                     <Border.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding NavigateCommand}"
-                                              CommandParameter="{Binding .}" />
-                    </Border.GestureRecognizers>
-                    <HorizontalStackLayout Spacing="10" Padding="10">
-                        <Label Text="{Binding DisplayName}"
-                               VerticalOptions="Center"
-                               HorizontalOptions="Start" />
-                    </HorizontalStackLayout>
-                </Border>
-            </DataTemplate>
-        </CollectionView.ItemTemplate>
-    </CollectionView>
+                        <TapGestureRecognizer 
+                            Command="{Binding Source={RelativeSource AncestorType={x:Type control:MenuItemControl}}, Path=NavigateCommand}" 
+                            CommandParameter="{Binding .}" />
+                    </Border.GestureRecognizers>  
+                    <HorizontalStackLayout Spacing="10" Padding="10">  
+                        <Label Text="{Binding DisplayName}"  
+                               VerticalOptions="Center"  
+                               HorizontalOptions="Start" />  
+                    </HorizontalStackLayout>  
+                </Border>  
+            </DataTemplate>  
+        </CollectionView.ItemTemplate>  
+    </CollectionView>  
 </ContentView>

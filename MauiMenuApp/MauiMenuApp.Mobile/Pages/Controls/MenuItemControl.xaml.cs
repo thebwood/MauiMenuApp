@@ -9,7 +9,6 @@ public partial class MenuItemControl : ContentView
 
     public static readonly BindableProperty MenuItemsProperty =
         BindableProperty.Create(nameof(MenuItems), typeof(List<MenuItemModel>), typeof(MenuItemControl), default(List<MenuItemModel>));
-
     public List<MenuItemModel> MenuItems
     {
         get => (List<MenuItemModel>)GetValue(MenuItemsProperty);
