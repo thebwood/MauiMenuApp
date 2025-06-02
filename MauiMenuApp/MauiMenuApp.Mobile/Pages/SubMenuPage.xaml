@@ -6,25 +6,8 @@
              xmlns:controls="clr-namespace:MauiMenuApp.Mobile.Pages.Controls"
              x:Class="MauiMenuApp.Mobile.Pages.SubMenuPage"
              Title="SubMenuPage">
-    <CollectionView ItemsSource="{Binding SubMenuItems.MenuItems}">
-        <CollectionView.ItemTemplate>
-            <DataTemplate x:DataType="model:MenuItemModel">
-                <Border Stroke="LightGray"
-                        StrokeThickness="1"
-                        BackgroundColor="White"
-                        Margin="0,5"
-                        Padding="15">
-                    <Border.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:MenuItemControlViewModel}}, Path=NavigateCommand}"
-                                              CommandParameter="{Binding .}" />
-                    </Border.GestureRecognizers>
-                    <HorizontalStackLayout Spacing="10" Padding="10">
-                        <Label Text="{Binding DisplayName}"
-                               VerticalOptions="Center"
-                               HorizontalOptions="Start" />
-                    </HorizontalStackLayout>
-                </Border>
-            </DataTemplate>
-        </CollectionView.ItemTemplate>
-    </CollectionView>
+    <Grid RowDefinitions="*">
+        <controls:MenuItemControl Grid.Row="0"
+                                  MenuItems="{Binding SubMenuItems.MenuItems}"/>
+    </Grid>
 </ContentPage>

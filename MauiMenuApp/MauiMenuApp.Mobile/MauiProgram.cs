@@ -38,8 +38,8 @@ namespace MauiMenuApp.Mobile
 #endif
             // Set base address using platform-specific logic
             string baseAddress = DeviceInfo.Platform == DevicePlatform.Android
-                 ? "https://10.0.2.2:7009/" // Android emulator
-                 : "https://localhost:7009/"; // iOS simulator
+                 ? "http://10.0.2.2:5142" // Android emulator
+                 : "http://localhost:5142"; // iOS simulator
                                             // Define the retry policy
                                             // Define the retry policy
             var retryPolicy = HttpPolicyExtensions

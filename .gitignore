@@ -18,3 +18,4 @@
 /.vs
 /MauiMenuApp/MauiMenuApp.Mobile/bin/Debug/net9.0-android
 /MauiMenuApp/MauiMenuApp.Domain/bin/Debug/net9.0
+/MauiMenuApi/MauiMenuApi.Api/Logs
