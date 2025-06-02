@@ -4,7 +4,7 @@ using System.Collections.ObjectModel;
 
 namespace MauiMenuApp.Mobile.ViewModels
 {
-    public class MainPageViewModel
+    public partial class MainPageViewModel : BaseViewModel
     {
         private readonly IMenuItemClient _menuItemClient;
         public ObservableCollection<MenuItemModel> MainMenuItems { get; set; } = new ObservableCollection<MenuItemModel>();
@@ -16,14 +16,25 @@ namespace MauiMenuApp.Mobile.ViewModels
 
         public async Task LoadMainMenuItemsAsync()
         {
-            var mainMenu = await _menuItemClient.GetMainMenuAsync();
-            if (mainMenu?.MenuItems != null)
+            var result = await _menuItemClient.GetMainMenuItems();
+
+            if (result.Success && result.Value != null)
             {
                 MainMenuItems.Clear();
-                foreach (var item in mainMenu.MenuItems)
+                foreach (var item in result.Value)
                 {
                     MainMenuItems.Add(item);
                 }
             }
+            else
+            {
+                // Handle errors, e.g., show a message to the user
+                // You can also log the errors or take other actions as needed
+                foreach (var error in result.Errors)
+                {
+                    Console.WriteLine($"Error: {error.Name}");
+                }
+            }
         }
+    }
 }

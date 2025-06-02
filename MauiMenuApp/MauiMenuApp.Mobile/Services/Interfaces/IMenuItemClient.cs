@@ -6,6 +6,6 @@ namespace MauiMenuApp.Mobile.Services.Interfaces
     public interface IMenuItemClient
     {
         Task<Result<List<MenuItemModel>>> GetMainMenuItems();
-        Task<Result<SubMenuModel>> GetSubMenuItems();
+        Task<Result<SubMenuModel>> GetSubMenuItems(int parentMenuItemId);
     }
 }

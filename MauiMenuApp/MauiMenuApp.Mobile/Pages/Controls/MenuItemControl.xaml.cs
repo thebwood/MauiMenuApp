@@ -6,12 +6,10 @@ namespace MauiMenuApp.Mobile.Pages.Controls;
 
 public partial class MenuItemControl
 {
-	private MenuItemControlViewModel ViewModel;
-
-    public MenuItemControl(MenuItemControlViewModel _viewModel)
+    private MenuItemControlViewModel _viewModel;
+    public MenuItemControl(MenuItemControlViewModel viewModel)
 	{
 		InitializeComponent();
-		ViewModel = _viewModel;
-		BindingContext = ViewModel;
+        _viewModel = viewModel;
     }
 }

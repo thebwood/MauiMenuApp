@@ -22,7 +22,7 @@ namespace MauiMenuApp.Mobile.Services
         {
             Result<List<MenuItemModel>>? result = new Result<List<MenuItemModel>>();
             
-            HttpResponseMessage? response = await _httpClient.GetAsync("api/Addresses");
+            HttpResponseMessage? response = await _httpClient.GetAsync("api/MenuItems");
             response.EnsureSuccessStatusCode();
 
             if (response != null)
@@ -55,9 +55,45 @@ namespace MauiMenuApp.Mobile.Services
             return result;
         }
 
-        public Task<Result<SubMenuModel>> GetSubMenuItems()
+        public async Task<Result<SubMenuModel>> GetSubMenuItems(int parentMenuItemId)
         {
-            throw new NotImplementedException();
+            Result<SubMenuModel>? result = new Result<SubMenuModel>();
+
+            HttpResponseMessage? response = await _httpClient.GetAsync($"api/MenuItems/submenus/{parentMenuItemId}");
+
+            if (response != null)
+            {
+                if (response.IsSuccessStatusCode)
+                {
+                    string content = await response.Content.ReadAsStringAsync();
+                    Result<SubMenuDto> responseDto = JsonSerializer.Deserialize<Result<SubMenuDto>>(content, new JsonSerializerOptions
+                    {
+                        PropertyNameCaseInsensitive = true
+                    }) ?? new();
+                    if (responseDto.Success)
+                    {
+                        result.StatusCode = responseDto.StatusCode;
+                        result.Value = responseDto.Value?.ToModel() ?? new SubMenuModel();
+                    }
+                    else
+                    {
+                        result.StatusCode = responseDto.StatusCode;
+                        result.Errors = responseDto.Errors;
+                    }
+                }
+                else
+                {
+                    result.StatusCode = response.StatusCode;
+                    result.Errors.Add(new Error("ServerError", "Failed to retrieve submenu items."));
+                }
+            }
+            else
+            {
+                result.StatusCode = HttpStatusCode.InternalServerError;
+                result.Errors.Add(new Error("NoServerResponse", "No response from server."));
+            }
+
+            return result;
         }
     }
 }

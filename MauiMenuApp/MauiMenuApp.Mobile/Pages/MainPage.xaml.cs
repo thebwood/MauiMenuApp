@@ -14,12 +14,12 @@ namespace MauiMenuApp.Mobile.Pages
             BindingContext = viewModel;
         }
 
-        protected override void OnAppearing()
+        protected override async void OnAppearing()
         {
             base.OnAppearing();
             if (_viewModel != null)
             {
-                _viewModel.GetMainMenuItems();
+                await _viewModel.LoadMainMenuItemsAsync();
             }
         }   
     }

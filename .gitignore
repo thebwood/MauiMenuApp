@@ -16,3 +16,5 @@
 /MauiMenuApp/MauiMenuApp.Domain/obj
 /MauiMenuApp/MauiMenuApp.Mobile/obj
 /.vs
+/MauiMenuApp/MauiMenuApp.Mobile/bin/Debug/net9.0-android
+/MauiMenuApp/MauiMenuApp.Domain/bin/Debug/net9.0

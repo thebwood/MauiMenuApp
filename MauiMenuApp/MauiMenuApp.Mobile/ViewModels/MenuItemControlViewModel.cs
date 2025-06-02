@@ -1,10 +1,14 @@
-﻿using MauiMenuApp.Domain.Models;
-using System.Collections.ObjectModel;
+﻿using CommunityToolkit.Mvvm.Input;
+using MauiMenuApp.Domain.Models;
 
 namespace MauiMenuApp.Mobile.ViewModels
 {
-    public class MenuItemControlViewModel
+    public partial class MenuItemControlViewModel : BaseViewModel
     {
-        public ObservableCollection<MenuItemModel> MenuItems { get; set; } = new ObservableCollection<MenuItemModel>();
+        [RelayCommand]
+        public async Task NavigateAsync(MenuItemModel menuItem)
+        {
+            await Shell.Current.GoToAsync($"{nameof(SubMenuPage)}?menuItemId={menuItem.MenuItemId}");
+        }
     }
 }

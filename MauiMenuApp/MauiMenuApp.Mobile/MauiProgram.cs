@@ -3,6 +3,9 @@ using MauiMenuApp.Mobile.Pages.Controls;
 using MauiMenuApp.Mobile.ViewModels;
 using Microsoft.Extensions.Logging;
 using Syncfusion.Maui.Toolkit.Hosting;
+using Polly;
+using Polly.Extensions.Http;
+using MauiMenuApp.Mobile.Services.Interfaces;
 
 namespace MauiMenuApp.Mobile
 {
@@ -33,6 +36,22 @@ namespace MauiMenuApp.Mobile
     		builder.Logging.AddDebug();
     		builder.Services.AddLogging(configure => configure.AddDebug());
 #endif
+            // Set base address using platform-specific logic
+            string baseAddress = DeviceInfo.Platform == DevicePlatform.Android
+                 ? "https://10.0.2.2:7009/" // Android emulator
+                 : "https://localhost:7009/"; // iOS simulator
+                                            // Define the retry policy
+                                            // Define the retry policy
+            var retryPolicy = HttpPolicyExtensions
+                .HandleTransientHttpError() // Handles 5xx and 408 errors
+                .WaitAndRetryAsync(3, retryAttempt => TimeSpan.FromSeconds(retryAttempt));
+
+            // Add HttpClient with retry policy
+            builder.Services.AddHttpClient<IMenuItemClient, MenuItemClient>(client =>
+            {
+                client.BaseAddress = new Uri(baseAddress);
+            })
+                .AddPolicyHandler(retryPolicy); // Attach the retry policy
 
             builder.Services.AddTransient<MainPageViewModel>();
             builder.Services.AddSingleton<MainPage>();
@@ -40,9 +59,6 @@ namespace MauiMenuApp.Mobile
             builder.Services.AddTransient<SubMenuPageViewModel>();
             builder.Services.AddSingleton<SubMenuPage>();
 
-            builder.Services.AddTransient<MenuItemControlViewModel>();
-            builder.Services.AddSingleton<MenuItemControl>();
-            
             return builder.Build();
         }
     }
