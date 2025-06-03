@@ -3,15 +3,34 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:viewmodels="clr-namespace:MauiMenuApp.Mobile.ViewModels"             
              xmlns:model="clr-namespace:MauiMenuApp.Domain.Models;assembly=MauiMenuApp.Domain"
-             xmlns:controls="clr-namespace:MauiMenuApp.Mobile.Pages.Controls"
              xmlns:pullToRefresh="clr-namespace:Syncfusion.Maui.Toolkit.PullToRefresh;assembly=Syncfusion.Maui.Toolkit"
              xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              x:Class="MauiMenuApp.Mobile.Pages.MainPage"
-             x:DataType="model:MenuItemModel"
+             x:DataType="viewmodels:MainPageViewModel"
              Title="Menu Items">
 
     <Grid RowDefinitions="*">
-        <controls:MenuItemControl Grid.Row="0"
-                                  MenuItems="{Binding MainMenuItems}"/>
+        <CollectionView ItemsSource="{Binding MainMenuItems}">
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="model:MenuItemModel">
+                    <Border Stroke="LightGray"  
+                        StrokeThickness="1"  
+                        BackgroundColor="White"  
+                        Margin="0,5"  
+                        Padding="15">
+                        <Border.GestureRecognizers>
+                            <TapGestureRecognizer 
+                                Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodels:MainPageViewModel}}, Path=NavigateCommand}" 
+                                CommandParameter="{Binding .}" />
+                        </Border.GestureRecognizers>
+                        <HorizontalStackLayout Spacing="10" Padding="10">
+                            <Label Text="{Binding DisplayName}"  
+                               VerticalOptions="Center"  
+                               HorizontalOptions="Start" />
+                        </HorizontalStackLayout>
+                    </Border>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
     </Grid>
 </ContentPage>

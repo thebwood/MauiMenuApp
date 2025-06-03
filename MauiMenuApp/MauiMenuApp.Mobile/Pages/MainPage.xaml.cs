@@ -17,10 +17,7 @@ namespace MauiMenuApp.Mobile.Pages
         protected override async void OnAppearing()
         {
             base.OnAppearing();
-            if (_viewModel != null)
-            {
-                await _viewModel.LoadMainMenuItemsAsync();
-            }
-        }   
+            await _viewModel.LoadMainMenuItemsAsync();
+        }
     }
 }

@@ -16,15 +16,18 @@ public partial class SubMenuPage : ContentPage
 
 	public int MenuItemId
 	{
-		set
+		get => _menuItemId;
+        set
 		{
+			_menuItemId = value;
             LoadData(value);
 		}
 	}
-
+	private int _menuItemId;
 	private async void LoadData(int menuItemId)
 	{
-		if (_viewModel != null)
+        _menuItemId = menuItemId;
+        if (_viewModel != null)
 		{
 			await _viewModel.LoadDataAsync(menuItemId);
 		}

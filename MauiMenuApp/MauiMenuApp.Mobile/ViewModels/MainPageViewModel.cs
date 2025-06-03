@@ -1,4 +1,7 @@
-﻿using MauiMenuApp.Domain.Models;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
+using MauiMenuApp.Domain.Common;
+using MauiMenuApp.Domain.Models;
 using MauiMenuApp.Mobile.Services.Interfaces;
 using System.Collections.ObjectModel;
 
@@ -7,20 +10,7 @@ namespace MauiMenuApp.Mobile.ViewModels
     public partial class MainPageViewModel : BaseViewModel
     {
         private readonly IMenuItemClient _menuItemClient;
-        private ObservableCollection<MenuItemModel> _mainMenuItems = new();
-        public ObservableCollection<MenuItemModel> MainMenuItems
-        {
-            get => _mainMenuItems;
-            set
-            {
-                if (_mainMenuItems != value)
-                {
-                    _mainMenuItems = value;
-                    OnPropertyChanged(nameof(MainMenuItems));
-                }
-            }
-        }
-
+        public ObservableCollection<MenuItemModel> MainMenuItems { get; set; } = new();
         public MainPageViewModel(IMenuItemClient menuItemClient)
         {
             _menuItemClient = menuItemClient;
@@ -28,7 +18,7 @@ namespace MauiMenuApp.Mobile.ViewModels
 
         public async Task LoadMainMenuItemsAsync()
         {
-            var result = await _menuItemClient.GetMainMenuItems();
+            Result<List<MenuItemModel>>? result = await _menuItemClient.GetMainMenuItems();
 
             if (result.Success && result.Value != null)
             {
@@ -47,6 +37,18 @@ namespace MauiMenuApp.Mobile.ViewModels
                     Console.WriteLine($"Error: {error.Name}");
                 }
             }
+        }
+
+        [RelayCommand]
+        public async Task NavigateAsync(MenuItemModel menuItem)
+        {
+            if (menuItem == null || menuItem.MenuItemId <= 0)
+            {
+                await ShowErrorMessage("Invalid menu item selected.");
+                return;
+            }
+            // Navigate to the SubMenuPage with the selected menu item ID
+            await Shell.Current.GoToAsync($"SubMenuPage?menuItemId={menuItem.MenuItemId}");
         }
     }
 }

@@ -2,6 +2,7 @@
 using CommunityToolkit.Mvvm.Input;
 using MauiMenuApp.Domain.Models;
 using MauiMenuApp.Mobile.Services.Interfaces;
+using Microsoft.Maui.Controls;
 using System;
 using System.Collections.ObjectModel;
 
@@ -12,6 +13,7 @@ namespace MauiMenuApp.Mobile.ViewModels
         private readonly IMenuItemClient _menuItemClient;
         [ObservableProperty]
         private SubMenuModel subMenuItems = new SubMenuModel();
+
         public SubMenuPageViewModel(IMenuItemClient menuItemClient)
         {
             _menuItemClient = menuItemClient;
@@ -37,5 +39,18 @@ namespace MauiMenuApp.Mobile.ViewModels
                 }
             }
         }
+
+        [RelayCommand]
+        public async Task NavigateAsync(MenuItemModel menuItem)
+        {
+            if (menuItem == null || menuItem.MenuItemId <= 0)
+            {
+                await ShowErrorMessage("Invalid menu item selected.");
+                return;
+            }
+            // Navigate to the SubMenuPage with the selected menu item ID
+            await Shell.Current.GoToAsync($"SubMenuPage?menuItemId={menuItem.MenuItemId}");
+        }
+
     }
 }
