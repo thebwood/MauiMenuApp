@@ -3,14 +3,14 @@
     public class Error
     {
         public string Code { get; set; }
-        public string Name { get; set; }
+        public string Message { get; set; }
 
 
-        public Error(string code, string name)
+        public Error(string code, string message)
 
         {
             Code = code;
-            Name = name;
+            Message = message;
         }
 
     }

@@ -35,7 +35,7 @@ namespace MauiMenuApp.Mobile.ViewModels
                 // You can also log the errors or take other actions as needed
                 foreach (var error in result.Errors)
                 {
-                    Console.WriteLine($"Error: {error.Name}");
+                    Console.WriteLine($"Error: {error.Message}");
                 }
             }
         }
